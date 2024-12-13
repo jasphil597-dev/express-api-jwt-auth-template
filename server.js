@@ -18,6 +18,12 @@ mongoose.connection.on('connected', () => {
 	console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
+// Routes go here
+
+app.get('/', (req, res) => {
+	res.json({ message: 'I am In!' });
+});
+
 // ... other middleware
 app.use(express.json());
 

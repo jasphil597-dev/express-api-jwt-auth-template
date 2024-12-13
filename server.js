@@ -11,24 +11,22 @@ const profilesRouter = require('./controllers/profiles.js');
 
 // Routes go here
 
-let PORT = process.env.MONGODB_URI;
+let PORT = process.env.PORT;
 mongoose.connect(process.env.MONGODB_URI);
 
 mongoose.connection.on('connected', () => {
 	console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
+// ... other middleware
 app.use(express.json());
 
-// ... other middleware
-
-// Routes go here
 app.use('/test-jwt', testJWTRouter);
 app.use('/users', usersRouter);
 app.use('/profiles', profilesRouter);
 
 // Routes go here
 
-app.listen(2000, () => {
+app.listen(PORT, () => {
 	console.log(`localhost:${PORT} `);
 });

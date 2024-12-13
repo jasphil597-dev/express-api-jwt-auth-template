@@ -20,18 +20,18 @@ mongoose.connection.on('connected', () => {
 });
 
 // Routes go here
+app.use(cors('*'));
+app.use(express.json());
 
 app.get('/', (req, res) => {
 	res.json({ message: 'I am In!' });
 });
 
 // ... other middleware
-app.use(express.json());
 
 app.use('/test-jwt', testJWTRouter);
 app.use('/users', usersRouter);
 app.use('/profiles', profilesRouter);
-app.use(cors());
 
 app.listen(PORT, () => {
 	console.log(`localhost:${PORT} `);
